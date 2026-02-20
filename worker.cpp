@@ -118,8 +118,12 @@ WorkerPlus::~WorkerPlus() { delete[] m_bonus; }
 void WorkerPlus::operator=(const WorkerPlus &other) {
   m_position = other.m_position;
 
-  for (int i = 0; i < m_n; i++) {
-    m_bonus[i] = other.m_bonus[i];
+  if (other.m_n != 0) {
+    m_n = other.m_n;
+    m_bonus = new int[m_n];
+    for (int i = 0; i < m_n; i++) {
+      m_bonus[i] = other.m_bonus[i];
+    }
   }
   // needs return *this    !
 }
