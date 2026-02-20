@@ -62,7 +62,9 @@ void Worker::getData() const {
 
   if (m_age != -1) {
     cout << "   age: " << m_age << "." << endl;
-  } else if (m_position != "Unknown") {
+  }
+
+  if (m_position != "Unknown") {
     cout << "   position: " << m_position << "." << endl;
   }
 }
