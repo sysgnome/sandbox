@@ -32,10 +32,8 @@ Worker::Worker(const Worker &other) {
   m_position = other.m_position;
 }
 
-// why void
 void Worker::operator=(const Worker &other) {
   m_position = other.m_position;
-  // needs return!
 }
 
 bool Worker::operator==(const Worker &other) const {
@@ -114,7 +112,6 @@ WorkerPlus::WorkerPlus(const WorkerPlus &other) {
 
 WorkerPlus::~WorkerPlus() { delete[] m_bonus; }
 
-// Worker& isntead void
 void WorkerPlus::operator=(const WorkerPlus &other) {
   m_position = other.m_position;
 
@@ -125,7 +122,6 @@ void WorkerPlus::operator=(const WorkerPlus &other) {
       m_bonus[i] = other.m_bonus[i];
     }
   }
-  // needs return *this    !
 }
 
 bool WorkerPlus::operator==(const WorkerPlus &other) const {
