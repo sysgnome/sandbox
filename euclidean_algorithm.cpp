@@ -1,13 +1,10 @@
 #include "euclidean_algorithm.h"
-#include <iostream>
-using namespace std;
 
 int gcd(int a, int b) {
   if (a == 0) {
     return b;
   }
 
-  cout << a << ", " << b << endl;
   return gcd(b % a, a);
 }
 
