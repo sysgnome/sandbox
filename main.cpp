@@ -3,10 +3,10 @@ using namespace std;
 
 int main() {
   int m = 3, n = 49;
-  int k[n - m];
+  int k[n - m + 1];
 
   for (int i = m; i <= n; i++) {
-    k[i] = i;
+    k[i - m] = i;
     cout << i << " ";
   }
   cout << endl;
