@@ -15,7 +15,7 @@ public:
 
   Worker operator=(const Worker &other);
   bool operator==(const Worker &other) const;
-  // add friend operator+
+  friend int operator+(const Worker &other);
 
   void setName(std::string name);
   void setAge(int age);

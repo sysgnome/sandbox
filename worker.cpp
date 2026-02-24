@@ -49,6 +49,10 @@ bool Worker::operator==(const Worker &other) const {
   return isEqual;
 }
 
+int operator+(const Worker &a) {
+  return 0;
+}
+
 void Worker::setName(string name) { m_name = name; }
 void Worker::setAge(int age) { m_age = age; }
 void Worker::setPosition(string position) { m_position = position; }
