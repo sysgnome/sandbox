@@ -32,8 +32,10 @@ Worker::Worker(const Worker &other) {
   m_position = other.m_position;
 }
 
-void Worker::operator=(const Worker &other) {
+// fix operator=
+Worker Worker::operator=(const Worker &other) {
   m_position = other.m_position;
+  return *this;
 }
 
 bool Worker::operator==(const Worker &other) const {
@@ -98,10 +100,8 @@ WorkerPlus::WorkerPlus(string name, int age, string position, int n)
   }
 }
 
-WorkerPlus::WorkerPlus(const WorkerPlus &other) {
-  m_name = other.m_name;
-  m_age = other.m_age;
-  m_position = other.m_position;
+WorkerPlus::WorkerPlus(const WorkerPlus &other)
+    : Worker(other) {
   m_n = other.m_n;
   m_bonus = new int[m_n];
 
@@ -116,8 +116,11 @@ void WorkerPlus::operator=(const WorkerPlus &other) {
   m_position = other.m_position;
 
   if (other.m_n != 0) {
+    delete[] m_bonus;
+
     m_n = other.m_n;
     m_bonus = new int[m_n];
+
     for (int i = 0; i < m_n; i++) {
       m_bonus[i] = other.m_bonus[i];
     }

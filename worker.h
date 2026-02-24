@@ -13,8 +13,9 @@ public:
   Worker(std::string name, int age, std::string position);
   Worker(const Worker &other);
 
-  virtual void operator=(const Worker &other);
-  virtual bool operator==(const Worker &other) const;
+  Worker operator=(const Worker &other);
+  bool operator==(const Worker &other) const;
+  // add friend operator+
 
   void setName(std::string name);
   void setAge(int age);
