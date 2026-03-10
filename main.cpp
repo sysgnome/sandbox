@@ -6,8 +6,11 @@ int main() {
   bool isEqual = 0;
   Worker max("Max", 37, "Bill Collector");
   Worker alex("Alex", 24);
+  // use all costructors for Worker
+
   WorkerPlus barbara("Barbara", 28, "Risk Manager", 4);
   WorkerPlus debra("Debra");
+  // use all constructors for WorkerPlus
 
   cout << "Worker:" << endl;
 
@@ -17,6 +20,7 @@ int main() {
   alex = max;
   alex.getData();
 
+  // add if for ==
   isEqual = alex == max;
   cout << "Does alex is equal to max?" << endl;
   cout << "Answer: " << isEqual << endl;

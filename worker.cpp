@@ -32,9 +32,11 @@ Worker::Worker(const Worker &other) {
   m_position = other.m_position;
 }
 
-// fix operator=
+// fix this operator=
 Worker Worker::operator=(const Worker &other) {
   m_position = other.m_position;
+  m_name = other.m_name;
+  m_age = other.m_age;
   return *this;
 }
 
@@ -116,6 +118,7 @@ WorkerPlus::WorkerPlus(const WorkerPlus &other)
 
 WorkerPlus::~WorkerPlus() { delete[] m_bonus; }
 
+// fix this copy constructor
 void WorkerPlus::operator=(const WorkerPlus &other) {
   m_position = other.m_position;
 
@@ -129,6 +132,7 @@ void WorkerPlus::operator=(const WorkerPlus &other) {
       m_bonus[i] = other.m_bonus[i];
     }
   }
+  // return *this
 }
 
 bool WorkerPlus::operator==(const WorkerPlus &other) const {
@@ -155,6 +159,9 @@ int WorkerPlus::operator[](int i) const {
   }
   return 0;
 }
+
+// add operator+
+// add sum bonuses. make addition for different array's size that sum bonuses by smaller array size.
 
 void WorkerPlus::getData() const {
   Worker::getData();
