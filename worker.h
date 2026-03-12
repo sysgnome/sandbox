@@ -13,9 +13,8 @@ public:
   Worker(std::string name, int age, std::string position);
   Worker(const Worker &other);
 
-  Worker operator=(const Worker &other);
+  Worker &operator=(const Worker &other);
   bool operator==(const Worker &other) const;
-  friend int operator+(const Worker &other);
 
   void setName(std::string name);
   void setAge(int age);
@@ -38,9 +37,10 @@ public:
 
   ~WorkerPlus();
 
-  void operator=(const WorkerPlus &other);
+  WorkerPlus &operator=(const WorkerPlus &other);
   bool operator==(const WorkerPlus &other) const;
   int operator[](int i) const;
+  friend WorkerPlus operator+(const WorkerPlus &a, const WorkerPlus &b);
 
   void getData() const;
   void setBonus();

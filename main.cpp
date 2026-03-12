@@ -4,33 +4,46 @@ using namespace std;
 
 int main() {
   bool isEqual = 0;
+
   Worker max("Max", 37, "Bill Collector");
   Worker alex("Alex", 24);
-  // use all costructors for Worker
+  Worker debian("Debian");
+  Worker bruno;
 
   WorkerPlus barbara("Barbara", 28, "Risk Manager", 4);
+  WorkerPlus joe("Joe", 22, "Data Scientist");
+  WorkerPlus ada("Ada", 23);
   WorkerPlus debra("Debra");
-  // use all constructors for WorkerPlus
+  WorkerPlus ali;
 
-  cout << "Worker:" << endl;
+  cout << "Workers:" << endl;
 
   max.getData();
   alex.getData();
+  debian.getData();
+  bruno.getData();
 
   alex = max;
   alex.getData();
 
-  // add if for ==
   isEqual = alex == max;
   cout << "Does alex is equal to max?" << endl;
-  cout << "Answer: " << isEqual << endl;
 
-  cout << "WorkerPlus:" << endl;
+  cout << "Answer: ";
+  if (isEqual) {
+    cout << "Yes!" << endl;
+  } else {
+    cout << "No!" << endl;
+  }
 
+  cout << "\nWorkers Plus:" << endl;
   barbara.setBonus();
 
   barbara.getData();
+  joe.getData();
+  ada.getData();
   debra.getData();
+  ali.getData();
 
   debra = barbara;
 
@@ -38,7 +51,13 @@ int main() {
 
   isEqual = debra == barbara;
   cout << "Does Debra is equal to Barbara?" << endl;
-  cout << "Answer: " << isEqual << endl;
+
+  cout << "Answer: ";
+  if (isEqual) {
+    cout << "Yes!" << endl;
+  } else {
+    cout << "No!" << endl;
+  }
 
   cout << "Output Barbara's third bonus: " << barbara[3] << endl;
 

@@ -32,8 +32,7 @@ Worker::Worker(const Worker &other) {
   m_position = other.m_position;
 }
 
-// fix this operator=
-Worker Worker::operator=(const Worker &other) {
+Worker &Worker::operator=(const Worker &other) {
   m_position = other.m_position;
   m_name = other.m_name;
   m_age = other.m_age;
@@ -49,10 +48,6 @@ bool Worker::operator==(const Worker &other) const {
   }
 
   return isEqual;
-}
-
-int operator+(const Worker &a) {
-  return 0;
 }
 
 void Worker::setName(string name) { m_name = name; }
@@ -106,8 +101,7 @@ WorkerPlus::WorkerPlus(string name, int age, string position, int n)
   }
 }
 
-WorkerPlus::WorkerPlus(const WorkerPlus &other)
-    : Worker(other) {
+WorkerPlus::WorkerPlus(const WorkerPlus &other) : Worker(other) {
   m_n = other.m_n;
   m_bonus = new int[m_n];
 
@@ -118,37 +112,45 @@ WorkerPlus::WorkerPlus(const WorkerPlus &other)
 
 WorkerPlus::~WorkerPlus() { delete[] m_bonus; }
 
-// fix this copy constructor
-void WorkerPlus::operator=(const WorkerPlus &other) {
-  m_position = other.m_position;
+WorkerPlus &WorkerPlus::operator=(const WorkerPlus &other) {
+  if (this == &other) {
+    return *this;
+  }
 
-  if (other.m_n != 0) {
-    delete[] m_bonus;
+  Worker::operator=(other);
 
-    m_n = other.m_n;
+  delete[] m_bonus;
+
+  m_n = other.m_n;
+  if (m_n > 0) {
     m_bonus = new int[m_n];
 
     for (int i = 0; i < m_n; i++) {
       m_bonus[i] = other.m_bonus[i];
     }
+  } else {
+    m_bonus = nullptr;
   }
-  // return *this
+
+  return *this;
 }
 
 bool WorkerPlus::operator==(const WorkerPlus &other) const {
-  bool isEqual = 0;
-
-  if (m_name == other.m_name && m_age == other.m_age &&
-      m_position == other.m_position) {
-    for (int i = 0; i < m_n; i++) {
-      if (m_bonus[i] != other.m_bonus[i]) {
-        return 0;
-      }
-    }
-    isEqual = 1;
+  if (!Worker::operator==(other)) {
+    return false;
   }
 
-  return isEqual;
+  if (m_n != other.m_n) {
+    return false;
+  }
+
+  for (int i = 0; i < m_n; i++) {
+    if (m_bonus[i] != other.m_bonus[i]) {
+      return false;
+    }
+  }
+
+  return true;
 }
 
 int WorkerPlus::operator[](int i) const {
@@ -160,8 +162,21 @@ int WorkerPlus::operator[](int i) const {
   return 0;
 }
 
-// add operator+
-// add sum bonuses. make addition for different array's size that sum bonuses by smaller array size.
+WorkerPlus operator+(const WorkerPlus &a, const WorkerPlus &b) {
+  WorkerPlus tmp(a);
+
+  if (b.m_n < a.m_n) {
+    tmp.m_n = b.m_n;
+    delete[] tmp.m_bonus;
+    tmp.m_bonus = new int[tmp.m_n];
+  }
+
+  for (int i = 0; i < tmp.m_n; i++) {
+    tmp.m_bonus[i] = a.m_bonus[i] + b.m_bonus[i];
+  }
+
+  return tmp;
+}
 
 void WorkerPlus::getData() const {
   Worker::getData();
