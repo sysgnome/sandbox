@@ -15,6 +15,8 @@ public:
 
   Worker &operator=(const Worker &other);
   bool operator==(const Worker &other) const;
+  friend std::ostream &operator<<(std::ostream &os, const Worker &obj);
+  friend std::istream &operator>>(std::istream &is, Worker &obj);
 
   void setName(std::string name);
   void setAge(int age);
@@ -41,6 +43,8 @@ public:
   bool operator==(const WorkerPlus &other) const;
   int operator[](int i) const;
   friend WorkerPlus operator+(const WorkerPlus &a, const WorkerPlus &b);
+  friend std::ostream &operator<<(std::ostream &os, const WorkerPlus &obj);
+  friend std::istream &operator>>(std::istream &is, WorkerPlus &obj);
 
   void getData() const;
   void setBonus();

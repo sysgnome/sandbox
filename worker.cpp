@@ -50,6 +50,26 @@ bool Worker::operator==(const Worker &other) const {
   return isEqual;
 }
 
+std::ostream &operator<<(std::ostream &os, const Worker &obj) {
+  os << " - name: " << obj.m_name << endl;
+  os << "   age: " << obj.m_age << endl;
+  os << "   position: " << obj.m_position << endl;
+  return os;
+}
+
+std::istream &operator>>(std::istream &is, Worker &obj) {
+  cout << "Enter name: ";
+  is >> obj.m_name;
+
+  cout << "Enter age: ";
+  is >> obj.m_age;
+
+  cout << "Enter position: ";
+  is >> obj.m_position;
+
+  return is;
+}
+
 void Worker::setName(string name) { m_name = name; }
 void Worker::setAge(int age) { m_age = age; }
 void Worker::setPosition(string position) { m_position = position; }
@@ -178,10 +198,37 @@ WorkerPlus operator+(const WorkerPlus &a, const WorkerPlus &b) {
   return tmp;
 }
 
+std::ostream &operator<<(std::ostream &os, const WorkerPlus &obj) {
+  os << (const Worker&)obj;
+
+  if (obj.m_n != 0) {
+    cout << "   bonuses for the last " << obj.m_n << " months: ";
+    for (int i = 0; i < obj.m_n; i++) {
+      cout << obj.m_bonus[i] << " ";
+    }
+    os << endl;
+  }
+  return os;
+}
+
+
+std::istream &operator>>(std::istream &is, WorkerPlus &obj) {
+  is >> (Worker&)obj;
+
+  cout << "Enter the number of bonuses: ";
+  is >> obj.m_n;
+
+  obj.m_bonus = new int[obj.m_n];
+
+  obj.setBonus();
+
+  return is;
+}
+
 void WorkerPlus::getData() const {
   Worker::getData();
   if (m_n != 0) {
-    cout << "   Bonuses for the last " << m_n << " months: ";
+    cout << "   bonuses for the last " << m_n << " months: ";
     for (int i = 0; i < m_n; i++) {
       cout << m_bonus[i] << " ";
     }
