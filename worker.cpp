@@ -98,10 +98,7 @@ WorkerPlus::WorkerPlus(string name, int age, string position, int n)
   }
 }
 
-WorkerPlus::WorkerPlus(const WorkerPlus &other) {
-  m_name = other.m_name;
-  m_age = other.m_age;
-  m_position = other.m_position;
+WorkerPlus::WorkerPlus(const WorkerPlus &other) : Worker(other) {
   m_n = other.m_n;
   m_bonus = new int[m_n];
 
