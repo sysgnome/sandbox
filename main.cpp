@@ -13,7 +13,7 @@ int main() {
   WorkerPlus ali;
   WorkerPlus debra("Debra");
   WorkerPlus barbara("Barbara", 28, "Risk Manager", 4);
-  WorkerPlus debian(debra);
+  WorkerPlus debian(barbara);
 
   cout << "Worker:" << endl;
 
