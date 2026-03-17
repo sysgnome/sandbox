@@ -11,6 +11,7 @@ int main() {
   Worker bruno;
 
   WorkerPlus barbara("Barbara", 28, "Risk Manager", 4);
+  WorkerPlus igor("Igor", 99, "Data Scientist", 6);
   WorkerPlus joe("Joe", 22, "Data Scientist");
   WorkerPlus ada("Ada", 23);
   WorkerPlus debra("Debra");
@@ -44,6 +45,12 @@ int main() {
   ada.getData();
   debra.getData();
   ali.getData();
+
+  igor.setBonus();
+  igor.getData();
+
+  igor = igor + barbara;
+  igor.getData();
 
   debra = barbara;
 
