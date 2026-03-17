@@ -38,6 +38,10 @@ int main() {
   barbara.getData();
   debian.getData();
 
+  debian.setBonus();
+
+  debian.getData();
+
   debra = barbara;
 
   debra.getData();
