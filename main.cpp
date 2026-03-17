@@ -4,15 +4,23 @@ using namespace std;
 
 int main() {
   bool isEqual = 0;
-  Worker max("Max", 37, "Bill Collector");
+
+  Worker joe;
   Worker alex("Alex", 24);
-  WorkerPlus barbara("Barbara", 28, "Risk Manager", 4);
+  Worker max("Max", 37, "Bill Collector");
+  Worker bruno(max);
+
+  WorkerPlus ali;
   WorkerPlus debra("Debra");
+  WorkerPlus barbara("Barbara", 28, "Risk Manager", 4);
+  WorkerPlus debian(debra);
 
   cout << "Worker:" << endl;
 
-  max.getData();
+  joe.getData();
   alex.getData();
+  max.getData();
+  bruno.getData();
 
   alex = max;
   alex.getData();
@@ -21,12 +29,14 @@ int main() {
   cout << "Does alex is equal to max?" << endl;
   cout << "Answer: " << isEqual << endl;
 
-  cout << "WorkerPlus:" << endl;
+  cout << "\nWorkerPlus:" << endl;
 
   barbara.setBonus();
 
-  barbara.getData();
+  ali.getData();
   debra.getData();
+  barbara.getData();
+  debian.getData();
 
   debra = barbara;
 
