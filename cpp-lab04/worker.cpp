@@ -58,6 +58,8 @@ std::ostream &operator<<(std::ostream &os, const Worker &obj) {
 }
 
 std::istream &operator>>(std::istream &is, Worker &obj) {
+  cout << "=== Enter Data ===" << endl;
+
   cout << "Enter name: ";
   is >> obj.m_name;
 
@@ -66,6 +68,8 @@ std::istream &operator>>(std::istream &is, Worker &obj) {
 
   cout << "Enter position: ";
   is >> obj.m_position;
+
+  cout << endl;
 
   return is;
 }
@@ -221,6 +225,8 @@ std::istream &operator>>(std::istream &is, WorkerPlus &obj) {
   obj.m_bonus = new int[obj.m_n];
 
   obj.setBonus();
+
+  cout << endl;
 
   return is;
 }
