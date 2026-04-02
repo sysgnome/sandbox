@@ -3,21 +3,20 @@
 using namespace std;
 
 int main() {
-  // 1. ввести декілька обʼєктів
-  // 2. додати їх
-  // 3. присвоїти
-  // 4. вивести
   // 5. додати обробку помилок
   // +теіоря до лаби 3 та 4
 
-  WorkerPlus max;
+  WorkerPlus debra;
   WorkerPlus debian;
+  WorkerPlus gentoo;
 
-  cin >> max >> debian;
+  cin >> debra >> debian;
 
-  WorkerPlus gentoo = max + debian;
+  gentoo = debra + debian;
 
-  cout << max;
+  cout << "=== Output Data ===" << endl;
+
+  cout << debra;
   cout << debian;
   cout << gentoo;
 
